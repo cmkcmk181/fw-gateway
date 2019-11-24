@@ -1,0 +1,32 @@
+server:
+  port: 8080
+#开启actuator管理api，后面要关闭
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: fw-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr:  106.14.204.239:8848
+      config:
+        server-addr:  106.14.204.239:8848
+        namespace:  811c56f9-7895-49b6-a6a3-e85538c2a31c
+        group:  DEFAULT_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      #routes:
+      #- id: fw-oauth
+      #  uri: lb://fw-oauth
+      #  predicates:
+      #  - Path=/oauth/**
+      #  filters:
+      #  - StripPrefix=0 # 去掉路径的 n 个前缀
+      #  - Auth=true # 输入过滤器类的名称前缀
